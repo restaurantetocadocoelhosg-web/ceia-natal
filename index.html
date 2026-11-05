@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; base-uri 'none'; form-action 'none'">
+  <title>Ceia de Natal 2026 | Toca do Coelho</title>
+  <meta name="description" content="Monte sua Ceia de Natal da Toca do Coelho e faça o pedido pelo WhatsApp. Encomendas até 22/12, retirada em 24/12 até 17h, em São Gonçalo.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ceia de Natal 2026 | Toca do Coelho">
+  <meta property="og:description" content="Escolha os pratos e envie o pedido pelo WhatsApp. Encomendas até 22/12.">
+  <meta property="og:url" content="https://restaurantetocadocoelhosg-web.github.io/ceia-natal/">
+  <meta property="og:image" content="https://restaurantetocadocoelhosg-web.github.io/ceia-natal/img/capa-ceia.jpg">
+  <link rel="icon" href="img/logo-toca-do-coelho.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="abertura">
+    <svg class="bolas" viewBox="0 0 320 210" aria-hidden="true" focusable="false">
+      <g class="bola bola-a">
+        <line x1="62" y1="0" x2="62" y2="82" />
+        <rect class="tampa" x="54" y="80" width="16" height="10" rx="2" />
+        <circle class="vermelha" cx="62" cy="116" r="28" />
+        <path class="fio" d="M35 112c17 8 37 8 54 0" />
+      </g>
+      <g class="bola bola-b">
+        <line x1="166" y1="0" x2="166" y2="118" />
+        <rect class="tampa" x="155" y="116" width="22" height="12" rx="2" />
+        <circle class="dourada" cx="166" cy="162" r="38" />
+        <path class="fio" d="M129 158c23 10 51 10 74 0" />
+      </g>
+      <g class="bola bola-c">
+        <line x1="266" y1="0" x2="266" y2="52" />
+        <rect class="tampa" x="259" y="50" width="14" height="9" rx="2" />
+        <circle class="vermelha" cx="266" cy="82" r="24" />
+        <path class="fio" d="M243 79c15 7 31 7 46 0" />
+      </g>
+    </svg>
+    <div class="abertura-texto">
+      <img class="logo" src="img/logo-toca-do-coelho.png" alt="Restaurante Toca do Coelho" width="96" height="96">
+      <h1>Ceia de Natal</h1>
+      <p class="chamada">Esse ano, a ceia é por nossa conta. Escolha os pratos, e o pedido sai pronto no WhatsApp.</p>
+      <dl class="prazos">
+        <div><dt>Encomendas até</dt><dd>22/12/2026</dd></div>
+        <div><dt>Retirada em</dt><dd>24/12/2026, até 17h</dd></div>
+        <div><dt>Onde</dt><dd>R. Cap. Juvenal Figueiredo, 71, Coelho, São Gonçalo</dd></div>
+      </dl>
+    </div>
+  </header>
+
+  <p id="encerrado" class="encerrado" role="status" hidden>As encomendas da ceia foram encerradas em 22/12. Obrigado!</p>
+
+  <main>
+    <section class="kit" aria-labelledby="titulo-kit">
+      <div class="kit-preco">
+        <h2 id="titulo-kit">Kit Ceia</h2>
+        <p class="kit-pessoas">Para até 4 pessoas</p>
+        <p class="kit-valor">R$ 120<small>,00 por pessoa</small></p>
+        <p class="kit-total">Total do kit: R$ 480,00</p>
+        <p class="kit-incluso"><strong>Já vem com:</strong> farofa de bacon com frutas (500 g) e arroz à grega (1 kg).</p>
+      </div>
+      <form id="form-kit" class="kit-montagem" novalidate>
+        <div id="kit-escolhas"></div>
+        <p id="kit-erro" class="erro" role="alert" hidden></p>
+        <button class="botao botao-ouro" type="submit">Adicionar kit ao pedido</button>
+      </form>
+    </section>
+
+    <section class="cardapio" aria-labelledby="titulo-avulsos">
+      <div class="cardapio-topo">
+        <h2 id="titulo-avulsos">Pratos avulsos</h2>
+        <p>Monte a sua ceia do seu jeito.</p>
+      </div>
+      <nav id="atalhos" class="atalhos" aria-label="Categorias do cardápio"></nav>
+      <div id="categorias" class="categorias"></div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <p>Restaurante Toca do Coelho. Dúvidas? Fale com a gente no WhatsApp <a href="https://wa.me/5521997912517">(21) 99791-2517</a> ou no Instagram <a href="https://www.instagram.com/restaurante.tocadocoelho/">@restaurante.tocadocoelho</a>.</p>
+  </footer>
+
+  <div id="barra" class="barra" hidden>
+    <p id="barra-resumo" class="barra-resumo" aria-live="polite"></p>
+    <button id="abrir-pedido" class="botao botao-ouro" type="button">Ver pedido</button>
+  </div>
+
+  <dialog id="pedido" class="pedido" aria-labelledby="titulo-pedido">
+    <div class="pedido-topo">
+      <h2 id="titulo-pedido">Seu pedido</h2>
+      <button id="fechar-pedido" class="botao-texto" type="button">Fechar</button>
+    </div>
+    <div id="pedido-itens"></div>
+    <p class="pedido-total"><span>Total</span><strong id="pedido-total"></strong></p>
+    <form id="form-pedido" class="pedido-form" novalidate>
+      <label for="nome">Nome de quem vai retirar</label>
+      <input id="nome" name="nome" type="text" autocomplete="name" maxlength="80" required>
+      <label for="telefone">Telefone para contato <span>(opcional)</span></label>
+      <input id="telefone" name="telefone" type="tel" autocomplete="tel" maxlength="30">
+      <label for="obs">Observações <span>(opcional)</span></label>
+      <textarea id="obs" name="obs" rows="2" maxlength="300" placeholder="Alergias, restrições, pedidos especiais"></textarea>
+      <p class="pedido-retirada">Retirada em 24/12/2026, até 17h. A equipe confirma o pedido e combina o pagamento pelo WhatsApp.</p>
+      <p id="pedido-erro" class="erro" role="alert" hidden></p>
+      <button class="botao botao-whatsapp" type="submit">Enviar pedido no WhatsApp</button>
+      <div id="pedido-aviso" class="pedido-aviso" hidden>
+        <p id="pedido-aviso-texto" role="status"></p>
+        <div class="pedido-plano-b">
+          <a id="pedido-link" class="botao-texto" target="_blank" rel="noopener">Abrir o WhatsApp</a>
+          <button id="copiar" class="botao-texto" type="button">Copiar pedido</button>
+        </div>
+        <p id="copiar-status" class="pedido-copiar-status" role="status" hidden></p>
+        <textarea id="pedido-texto" rows="7" readonly aria-label="Texto do pedido" hidden></textarea>
+      </div>
+      <button id="limpar" class="botao-texto" type="button">Limpar pedido</button>
+    </form>
+  </dialog>
+
+  <script src="catalogo.js"></script>
+  <script src="pedido.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
